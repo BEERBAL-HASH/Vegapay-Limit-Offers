@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/BEERBAL-HASH/Vegapay-Limit-Offer/config"
+	"github.com/BEERBAL-HASH/Vegapay-Limit-Offer/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -21,6 +22,6 @@ func ConnectDB() {
 		panic(err)
 	}
 	fmt.Println("Database connected successfully")
-
+	db.AutoMigrate(&models.Account{}, &models.LimitOffer{})
 	config.DBconn = db
 }
